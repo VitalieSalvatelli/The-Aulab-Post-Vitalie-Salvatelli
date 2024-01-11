@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +34,11 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
 
-        Auth::user()->articles()->create($request->all());
+        $article=Auth::user()->articles()->create($request->all());
+
+        $article->image=$request->file('image')->storeAs('public/images/'.$article->id,'copertina.jpg');
+
+        $article->save();
 
 
         return redirect()->route('home')->with('message','Articolo caricato correttamente');
@@ -43,7 +49,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -69,4 +75,19 @@ class ArticleController extends Controller
     {
         //
     }
+
+    public function articlesForCategory(Category $category){
+    
+        $articles = Article::where('category_id', $category->id)->orderBy('created_at','desc')->get();
+
+        return view('articles.category', compact('articles', 'category'));
+
+    }
+
+    public function articlesForUser(User $user){
+        $articles = Article::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+
+        return view('articles.user', compact('articles','user'));
+    }
+
 }

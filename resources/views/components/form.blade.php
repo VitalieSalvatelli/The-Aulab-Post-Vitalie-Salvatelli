@@ -20,13 +20,16 @@
     <div class="mb-3 text-center">
         <label class="form-label">Categoria</label>
 
-        <select class="form-control" name="category_id">
+        <select class="form-control @error('text') is-invalid @enderror" name="category_id">
             <option selected>Scegli la categoria del post</option>
             @foreach ($categories as $category)
                 
             <option value="{{$category->id}}">{{$category->name}}</option>
 
             @endforeach
+            @error('text')
+                <span class="small text-danger">{{$message}}</span>
+            @enderror
         </select>
     </div>
 
@@ -37,7 +40,10 @@
 
     <div class="mb-3 text-center">
         <label for="floatingTextarea2">Testo</label>
-        <textarea class="form-control" name="text" cols="30" rows="10" style="height: 100px">{{old('text')}}</textarea>
+        <textarea class="form-control @error('text') is-invalid @enderror" name="text" cols="30" rows="10" style="height: 100px">{{old('text')}}</textarea>
+        @error('text')
+                <span class="small text-danger">{{$message}}</span>
+        @enderror
     </div>
     
     <button type="submit" class="btn btn-primary">Submit</button>

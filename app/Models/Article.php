@@ -12,7 +12,6 @@ class Article extends Model
         'title',
         'subtitle',
         'text',
-        'image',
         'user_id',
         'category_id',
     ];

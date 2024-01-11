@@ -1,12 +1,11 @@
-<x-main title="Homepage">
+<x-main title="Post di {{$user->name}}">
 
-    @if (session('message'))
-        <div class="alert alert-success" role="alert">
-            {{session('message')}}
-        </div>
-    @endif
+    <div class="text-center">
+        <h1>Tutti i post di: {{$user->name}}</h1>
+    </div>
 
     <div class="container">
+        
         <div class="row">
             @foreach ($articles as $article)
             <div class="col-md-4">

@@ -1,12 +1,11 @@
-<x-main title="Homepage">
+<x-main title="{{$category->name}}">
 
-    @if (session('message'))
-        <div class="alert alert-success" role="alert">
-            {{session('message')}}
-        </div>
-    @endif
+    <div class="text-center">
+        <h1>{{$category->name}}</h1>
+    </div>
 
     <div class="container">
+        
         <div class="row">
             @foreach ($articles as $article)
             <div class="col-md-4">

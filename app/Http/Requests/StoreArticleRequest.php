@@ -22,11 +22,10 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=>'required|max:2|unique:articles',
+            'title'=>'required|max:200|unique:articles',
             'subtitle'=>'required|max:500|unique:articles',
-            'category'=>'required',
+            'category_id'=>'required',
             'text'=>'required',
-            'image'=>'required',
         ];
     }
 
@@ -34,11 +33,12 @@ class StoreArticleRequest extends FormRequest
         return [
             'title.max'=>'Titolo troppo lungo',
             'title.unique'=>'Titolo già presente',
+            'title.required'=>'Inserisci il titolo dell articolo',
             'subtitle.max'=>'Sottotitolo troppo lungo',
             'subtitle.unique'=>'Sottotitolo già presente',
-            'category.required'=>'Seleziona una categoria',
+            'subtitle.required'=>'Inserisci il sottotitolo dell articolo',
+            'category_id.required'=>'Seleziona una categoria',
             'text.required'=>'Inserisci il testo dell articolo',
-            'image.required'=>'Seleziona un inmmagine di copertina',
         ];
     }
 
