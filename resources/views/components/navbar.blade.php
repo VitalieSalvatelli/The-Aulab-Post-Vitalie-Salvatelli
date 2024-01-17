@@ -27,6 +27,26 @@
             <li class="nav-item">
               <a class="nav-link text-white" href="{{route('articles.create')}}">Crea articolo</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{{route('work.with.us')}}">Lavora con noi</a>
+            </li>
+
+            @if (Auth::user() && Auth::user()->is_admin)
+
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{{route('admin.dashboard')}}">Dashboard admin</a>
+            </li>
+                
+            @endif
+
+            @if (Auth::user() && Auth::user()->is_revisor)
+
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{{route('revisor.dashboard')}}">Dashboard revisor</a>
+            </li>
+                
+            @endif
               
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

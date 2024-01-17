@@ -15,7 +15,7 @@
             <x-navbar/>
         </div>
 
-        <div class="container text-center">
+        <div class="text-center">
             <h1 class="mb-3" style="font-size: 100px">{{config('app.name')}}</h1>
         </div>
 
