@@ -32,29 +32,32 @@
               <a class="nav-link text-white" href="{{route('work.with.us')}}">Lavora con noi</a>
             </li>
 
-            @if (Auth::user() && Auth::user()->is_admin)
+            
 
-            <li class="nav-item">
-              <a class="nav-link text-white" href="{{route('admin.dashboard')}}">Dashboard admin</a>
-            </li>
-                
-            @endif
-
-            @if (Auth::user() && Auth::user()->is_revisor)
-
-            <li class="nav-item">
-              <a class="nav-link text-white" href="{{route('revisor.dashboard')}}">Dashboard revisor</a>
-            </li>
-                
-            @endif
+            
               
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{Auth::user()->name}}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                
+                @if (Auth::user() && Auth::user()->is_admin)
+
+                  <li class="nav-item">
+                    <a class="nav-link " href="{{route('admin.dashboard')}}">Dashboard admin</a>
+                  </li>
+                
+                @endif
+
+                @if (Auth::user() && Auth::user()->is_revisor)
+
+                  <li class="nav-item">
+                    <a class="nav-link " href="{{route('revisor.dashboard')}}">Dashboard revisor</a>
+                  </li>
+                
+                @endif
+
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/logout" onclick="event.preventDefault();getElementById('form-logout').submit();">Logout</a></li>
                 <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>

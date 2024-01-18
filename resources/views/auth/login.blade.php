@@ -1,5 +1,13 @@
 <x-main title="Login">
 
+    <div class="container ">
+        <div class="row align-items-center">
+            <div class="col-12 text-center">
+                <h1 class="display-4 mt-4 pt-2" style="font-size: 100px">{{config('app.name')}}</h1>
+            </div>
+        </div>
+    </div>
+
     @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
         {{ session('status') }}
@@ -29,9 +37,9 @@
             <label class="form-label">Ricordati di me</label>
         </div>
     
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Login</button>
 
-        <a href="/forgot-password">Password dimenticata</a>
+        <a href="/forgot-password" class="btn btn-danger mx-3">Password dimenticata</a>
     
     </form>
 

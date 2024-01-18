@@ -1,40 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
-</head>
-<body>
+<x-main title="Dashboard">
 
-    <div class="container my-3">
+    <div class="container">
+        
+            <div class="row align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="mt-4 pt-2" style="font-size: 100px">{{config('app.name')}}</h1>
+                </div>
+            </div>
+        
+
         <div class="row">
-            <div class="col-12">
-                <h2>Richieste di amministratore</h2>
-                <x-admin_request_table :adminRequest="$adminRequest"/>
+            <div class="col-12 text-center my-5">
+                <h1>Bentornato {{Auth::user()->name}}</h1>
             </div>
         </div>
-    </div>
-    
-    <div class="container my-3">
-        <div class="row">
-            <div class="col-12">
-                <h2>Richieste di revisore</h2>
-                <x-revisor_request_table :revisorRequest="$revisorRequest"/>
+
+            <div class="row my-3">
+                <div class="col-12">
+                    <h2 class="text-center">Richieste di amministratore</h2>
+                    <x-admin_request_table :adminRequest="$adminRequest"/>
+                </div>
             </div>
-        </div>
-    </div>
     
-    <div class="container my-3">
-        <div class="row">
-            <div class="col-12">
-                <h2>Richieste di articolista</h2>
-                <x-writer_request_table :writerRequest="$writerRequest"/>
+    
+        
+            <div class="row my-3">
+                <div class="col-12">
+                    <h2 class="text-center">Richieste di revisore</h2>
+                    <x-revisor_request_table :revisorRequest="$revisorRequest"/>
+                </div>
             </div>
-        </div>
-    </div>
+        
     
-</body>
-</html>
+            
+            <div class="row my-3">
+                <div class="col-12">
+                    <h2 class="text-center">Richieste di articolista</h2>
+                    <x-writer_request_table :writerRequest="$writerRequest"/>
+                </div>
+            </div>
+            
+
+</div>
+    
+</x-main>

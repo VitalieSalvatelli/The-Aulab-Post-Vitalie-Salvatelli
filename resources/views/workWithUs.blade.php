@@ -1,8 +1,16 @@
 <x-main title="Lavora con noi">
 
+    <div class="container ">
+        <div class="row align-items-center">
+            <div class="col-12 text-center">
+                <h1 class="display-4 mt-4 pt-2" style="font-size: 100px">{{config('app.name')}}</h1>
+            </div>
+        </div>
+    </div>
+
     <div class="container my-5">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <h1>Lavora con noi</h1>
             </div>
         </div>
@@ -11,14 +19,14 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-12">
-                <h3>Lavora come scrittore</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, facilis iure? Eum, impedit. Aliquid voluptas similique recusandae deserunt commodi? Modi.</p>
+                <h3 class="text-end">Lavora come scrittore</h3>
+                <p class="text-end">Hai qualcosa di nuovo da scrivere? fai richiesta per diventare un WRITER</p>
 
-                <h3>Lavora come scrittore</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, facilis iure? Eum, impedit. Aliquid voluptas similique recusandae deserunt commodi? Modi.</p>
+                <h3 class="text-center">Lavora come Revisor</h3>
+                <p class="text-center">Aiutaci a revisionare i post prima di renderli pubblici a tutti. Fai richiesta per diventare un REVISOR</p>
 
-                <h3>Lavora come scrittore</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, facilis iure? Eum, impedit. Aliquid voluptas similique recusandae deserunt commodi? Modi.</p>
+                <h3>Lavora come Admin</h3>
+                <p>Aiutaci a reclutare le migliori persone per la nostra comunity diventando un ADMIN</p>
             </div>
             <div class="col-12">
 
@@ -26,7 +34,7 @@
                     @csrf
                 
                     <div class="mb-3 text-center">
-                        <label class="form-label">Per quale posizione vuoi candidarti?</label>
+                        <label class="form-label h5">Per quale posizione vuoi candidarti?</label>
                 
                         <select class="form-control" name="role">
                             <option selected>Scegli una posizione</option>                        

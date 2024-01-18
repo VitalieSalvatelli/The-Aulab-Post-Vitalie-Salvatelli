@@ -1,5 +1,8 @@
-.head{
-    background-image: url(https://www.addlance.com/blog/wp-content/uploads/2019/04/immagini-da-scaricare.jpg);
-    height: 500px ;
-    justify-content: center;
+.my-head{
+    height: 45vh;
+    min-height: 200px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.568), rgba(0, 0, 0, 0.568));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }

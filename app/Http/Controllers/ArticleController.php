@@ -78,14 +78,14 @@ class ArticleController extends Controller
 
     public function articlesForCategory(Category $category){
     
-        $articles = Article::where('category_id', $category->id)->where('is_accepted', true)->orderBy('created_at','desc')->get();
+        $articles = Article::where('category_id', $category->id)->where('is_accepted', true)->orderBy('created_at','desc')->paginate(6);
 
         return view('articles.category', compact('articles', 'category'));
 
     }
 
     public function articlesForUser(User $user){
-        $articles = Article::where('user_id', $user->id)->where('is_accepted', true)->orderBy('created_at', 'desc')->get();
+        $articles = Article::where('user_id', $user->id)->where('is_accepted', true)->orderBy('created_at', 'desc')->paginate(6);
 
         return view('articles.user', compact('articles','user'));
     }
