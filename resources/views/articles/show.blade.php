@@ -31,6 +31,14 @@
                 <a href="{{route('articles.category', $article->category)}}" class="btn btn-primary">{{$article->category->name}}</a>
             </div>
         </div>
+
+        <div class="d-flex">
+            <p class="h5">Tag: </p>
+            @foreach ($article->tags as $tag)
+                <span>#{{$tag->name}} </span>
+            @endforeach
+        </div>
+
     </div>
 
 </x-main>

@@ -20,14 +20,29 @@
     <div class="mb-3 text-center">
         <label class="form-label">Categoria</label>
 
-        <select class="form-control @error('text') is-invalid @enderror" name="category_id">
+        <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
             <option selected>Scegli la categoria del post</option>
             @foreach ($categories as $category)
                 
             <option value="{{$category->id}}">{{$category->name}}</option>
 
             @endforeach
-            @error('text')
+            @error('category_id')
+                <span class="small text-danger">{{$message}}</span>
+            @enderror
+        </select>
+    </div>
+
+    <div class="mb-3 text-center">
+        <label class="form-label">Tags</label>
+
+        <select class="form-control @error('tags') is-invalid @enderror" name="tags[]" multiple>
+            @foreach ($tags as $tag)
+                
+            <option value="{{$tag->id}}">{{$tag->name}}</option>
+
+            @endforeach
+            @error('tags')
                 <span class="small text-danger">{{$message}}</span>
             @enderror
         </select>

@@ -1,11 +1,11 @@
-<x-main title="Post di {{$user->name}}">
+<x-main title="{{$key}}">
 
     <div class="my-head">
 
         <div class="container h-100">
             <div class="row h-100-align-items-center">
                 <div class="col-12 text-center">
-                    <h1 class="display-4 mt-5 pt-5" style="font-size: 100px">{{config('app.name')}}</h1>
+                    <h1 class="display-1 mt-5 pt-5" >{{config('app.name')}}</h1>
                 </div>
             </div>
         </div>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="text-center my-5 py-3">
-        <h1>Tutti i post di: {{$user->name}}</h1>
+        <h1>ARTICOLI PER: {{$key}}</h1>
     </div>
 
     <div class="container col-12 my-3">

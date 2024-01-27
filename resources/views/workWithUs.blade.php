@@ -1,5 +1,7 @@
 <x-main title="Lavora con noi">
 
+    
+
     <div class="container ">
         <div class="row align-items-center">
             <div class="col-12 text-center">
@@ -15,6 +17,12 @@
             </div>
         </div>
     </div>
+
+    @if (session('message'))
+        <div class="alert alert-danger" role="alert">
+            <div class="text-center">{{session('message')}}</div>
+        </div>
+    @endif
 
     <div class="container my-5">
         <div class="row">

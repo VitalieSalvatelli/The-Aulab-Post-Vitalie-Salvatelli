@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Category;
@@ -25,7 +26,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $tags = Tag::all();
+        return view('articles.create', compact('tags'));
     }
 
     /**
@@ -37,6 +39,11 @@ class ArticleController extends Controller
         $article=Auth::user()->articles()->create($request->all());
 
         $article->image=$request->file('image')->storeAs('public/images/'.$article->id,'copertina.jpg');
+
+        $selectedTags = $request->input('tags');
+        foreach($selectedTags as $tagId){
+            $article->tags()->attach($tagId);
+        }
 
         $article->save();
 

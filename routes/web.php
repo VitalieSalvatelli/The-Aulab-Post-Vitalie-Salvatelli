@@ -41,6 +41,8 @@ Route::get('/articles/{category}/index', [ArticleController::class,'articlesForC
 
 Route::get('/articles/{user}/created', [ArticleController::class,'articlesForUser'])->name('articles.user');
 
+Route::get('/articles/search', [PublicController::class, 'searchArticle'])->name('search.article');
+
 Route::middleware(['admin', 'verified'])->group(function(){
 
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -50,6 +52,18 @@ Route::middleware(['admin', 'verified'])->group(function(){
     Route::get('/admin/{user}/set-admin', [AdminController::class, 'makeUserAdmin'])->name('admin.makeUserAdmin');
 
     Route::get('/admin/{user}/set-writer', [AdminController::class, 'makeUserWriter'])->name('admin.makeUserWriter');
+
+    Route::post('/tag/{tag}/update', [AdminController::class, 'editTag'])->name('tag.edit');
+
+    Route::delete('/tag/{tag}/delete', [AdminController::class, 'deleteTag'])->name('tag.delete');
+
+    Route::post('/tag/store', [AdminController::class, 'storeTag'])->name('tag.storage');
+
+    Route::post('/category/{category}/update', [AdminController::class, 'editCategory'])->name('category.edit');
+
+    Route::delete('/category/{category}/delate', [AdminController::class, 'deleteCategory'])->name('category.delete');
+
+    Route::post('/category/store', [AdminController::class, 'storeCategory'])->name('category.storage');
 
 });
 

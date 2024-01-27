@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 ">
-                <x-form/>
+                <x-form :tags="$tags"/>
             </div>
         </div>
     </div>

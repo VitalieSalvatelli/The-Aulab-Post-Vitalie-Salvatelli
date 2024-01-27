@@ -20,10 +20,42 @@ class PublicController extends Controller
     }
 
     public function sendRoleRequest(Request $request){
+
+        // if (Auth::user()->is_writer == 1 ) {
+            
+        //     return redirect()->back()->with('message', 'Hai gia fatto richiesta per questa posizione');
+        // }
+
+       
+        
+
         $user = Auth::user();
         $role = $request->input('role');
         $email = $request->input('email');
         $presentation = $request->input('presentation');
+
+        switch ($role){
+            case 'admin':
+                if (Auth::user()->is_admin == 1 || Auth::user()->is_admin === NULL) {
+                     
+                    return redirect()->back()->with('message', 'Hai gia fatto richiesta per questa posizione');
+                }
+                break;
+            case 'revisor':
+                if (Auth::user()->is_revisor == 1 || Auth::user()->is_revisor === NULL) {
+                    
+                    return redirect()->back()->with('message', 'Hai gia fatto richiesta per questa posizione');
+                }
+                break;
+            case 'writer':
+                if (Auth::user()->is_writer == 1 || Auth::user()->is_writer === NULL) {
+                    
+                    return redirect()->back()->with('message', 'Hai gia fatto richiesta per questa posizione');
+                }
+                break;
+        }
+
+
         $requestMail = new RequestRoleMail(compact('role', 'email', 'presentation'));
         Mail::to('Admin@aulabpost.it')->send($requestMail);
         switch ($role){
@@ -39,6 +71,12 @@ class PublicController extends Controller
         }
         $user->update();
         return redirect()->route('home')->with('message', 'grazie per averci contattati');
+    }
+
+    public function searchArticle(Request $request){
+        $key = $request->input('key');
+        $articles=Article::search($key)->where('is_accepted', true)->paginate(6);
+        return view('articles.search', compact('articles', 'key'));
     }
 
 }

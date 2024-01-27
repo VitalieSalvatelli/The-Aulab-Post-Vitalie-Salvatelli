@@ -16,6 +16,13 @@
         <h1>{{$category->name}}</h1>
     </div>
 
+    <div class="container col-12 my-3">
+        <form action="{{route('search.article')}}" method="get">
+            <input type="text" name="key" class="form-control me-2" placeholder="Search">
+            <button class="btn btn-primary mt-2" type="submit">Search</button>
+        </form>
+    </div>
+
     <div class="container-fluid mb-3">
         @foreach ($articles as $article)
         <div class="row py-5 bg-light">
