@@ -17,6 +17,7 @@ class Article extends Model
         'text',
         'user_id',
         'category_id',
+        'slug',
     ];
 
     //mette in relazione articoli e utenti specificando che un articolo appartiene a un solo utente
@@ -40,6 +41,17 @@ class Article extends Model
             'text'=>$this->text,
             'category'=>$this->category
         ];
+    }
+
+    public function getRouteKeyName(){
+        return 'slug';
+    }
+
+    public function readDuration(){
+        $totalWords = str_word_count($this->text);
+        $minutesToRead = round($totalWords / 200);
+
+        return intval($minutesToRead);
     }
 
 }

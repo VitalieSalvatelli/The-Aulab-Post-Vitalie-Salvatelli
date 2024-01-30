@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('title', 200)->unique();
             $table->string('subtitle', 500)->unique();
             $table->text('text');
-            $table->string('image')->nullable()->default('Immagine non presente');
+            $table->string('image')->nullable()->default('public/images/default/def-img.png');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelate('SET NULL');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('SET NULL');
             $table->timestamps();
         });
     }

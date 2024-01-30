@@ -31,11 +31,19 @@ Route::middleware(['writer', 'verified'])->group(function(){
 
     Route::get('/articles/create', [ArticleController::class,'create'])->name('articles.create');
 
-    route::post('/articles/store', [ArticleController::class, 'store'])->name('articles.store');
+    Route::post('/articles/store', [ArticleController::class, 'store'])->name('articles.store');
+
+    Route::get('/article/dashboard', [ArticleController::class, 'writerDashboard'])->name('writer.dashboard');
+
+    Route::get('/article/{article}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+
+    Route::put('/article/{article}/update', [ArticleController::class, 'update'])->name('article.update');
+
+    Route::delete('/article/{article}/delete', [ArticleController::class, 'destroy'])->name('article.delete');
 
 });
 
-Route::get('/articles/{article}/show', [ArticleController::class,'show'])->name('articles.show');
+Route::get('/article/{article:slug}/show', [ArticleController::class,'show'])->name('articles.show');
 
 Route::get('/articles/{category}/index', [ArticleController::class,'articlesForCategory'])->name('articles.category');
 

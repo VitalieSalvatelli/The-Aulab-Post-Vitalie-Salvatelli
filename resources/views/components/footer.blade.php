@@ -1,5 +1,5 @@
 
-<div>
+<div class="gradient-custom">
 
     <section class="">
     <!-- Footer -->

@@ -1,62 +1,69 @@
 <x-main title="{{$category->name}}">
 
-    <div class="my-head">
-
-        <div class="container h-100">
-            <div class="row h-100-align-items-center">
-                <div class="col-12 text-center">
-                    <h1 class="display-4 mt-5 pt-5" style="font-size: 100px">{{config('app.name')}}</h1>
+    <div class="p-5 text-center bg-image my-head">
+        <div class="mask" >
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">The Aulab Post</h1>
+                    <h4 class="mb-3">Life In An Alternate World With His Deepest Potential, And Will Keep It Real</h4>
+                    @if (Auth::user() && Auth::user()->is_writer)
+                        <a data-mdb-ripple-init class="btn btn-outline-light btn-lg" href="{{route('articles.create')}}" role="button">
+                            Crea un articolo
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="text-center my-5 py-3">
         <h1>{{$category->name}}</h1>
     </div>
 
-    <div class="container col-12 my-3">
-        <form action="{{route('search.article')}}" method="get">
-            <input type="text" name="key" class="form-control me-2" placeholder="Search">
-            <button class="btn btn-primary mt-2" type="submit">Search</button>
-        </form>
-    </div>
 
-    <div class="container-fluid mb-3">
-        @foreach ($articles as $article)
-        <div class="row py-5 bg-light">
+    <div class="container my-3">
+        <div class="row">
+            @foreach ($articles as $article)
+        
+            
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 ">
+                    <div class="card ">
+                        <img class="card-img" src="{{Storage::url($article->image)}}" alt="image">
+                        
+                        
+                        <div class="card-body">                            
+                            <h4 class="card-title">{{$article->title}}</h4>                            
+                            <small class="text-muted cat">
+                                <i class="bi bi-person-check-fill text-info"></i> {{$article->user->name}}
+                            </small>
+                            <p class="card-text">{{Str::limit($article->text,200)}}</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="{{route('articles.show', $article)}}" class="btn btn-outline-info">Leggi articolo</a>
+                                <a href="{{route('articles.category', $article->category)}}" class="btn btn-outline-danger btn-sm ">{{$article->category->name}}</a>
+                            </div>      
+                        </div>
 
-            <div class="col-12 col-md-5 text-center text-md-right">
+                        <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">                            
+                            <i class="bi bi-hourglass-split text-info"></i>
+                            <div class="views">Tempo di lettura: {{$article->readDuration()}} minuti</div>                     
+                        </div>
 
-                <img src="{{Storage::url($article->image)}}" class="img-fluid mr-md-2" alt="...">
+                        <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">                            
+                            <i class="bi bi-calendar3 text-info"></i>
+                            <div class="views">{{$article->created_at->format('d/m/y')}}</div>                     
+                        </div>
 
-            </div>
-
-            <div class="col-12 col-md-5 px-5">
-                <h3 class="col-12 text-center text-md-left">{{$article->title}}</h3>
-                <hr>
-                <div class="row">
-                    <div class="col-12 py-2">
-                        <a href="{{route('articles.category', $article->category)}}" class=" me-5">{{$article->category->name}}</a>
-                    </div>
-                    <div class="col-12 py-2">
-                        <a href="{{route('articles.show', $article)}}" class="btn btn-primary">Leggi articolo</a>
                     </div>
                 </div>
-                <p class="mt-2">{{Str::limit($article->text,200)}}</p>
-            </div>
-            <div class="col-md-2"></div>
             
-           
-            
-        </div>
-        @endforeach
+        
+            @endforeach
 
-        <div class="mt-auto">
-            {{$articles->links()}}
-        </div>
+        </div>  
+    </div>
 
+    <div class="mt-auto">
+        {{$articles->links()}}
     </div>
 
 </x-main>
