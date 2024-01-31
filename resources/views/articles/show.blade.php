@@ -10,7 +10,7 @@
                         <!-- Post title-->
                         <h1 class="fw-bolder mb-1">{{$article->title}}</h1>
                         
-                        <div class="text-muted fst-italic mb-2">Posted on {{$article->created_at}} by <a href="{{route('articles.user', $article->user)}}">{{$article->user->name}}</a></div>
+                        <div class="text-muted fst-italic mb-2">Postato il: {{$article->created_at}} Da: <a href="{{route('articles.user', $article->user)}}">{{$article->user->name}}</a></div>
                         
                         <a class="badge bg-danger text-decoration-none link-light" href="{{route('articles.category', $article->category)}}">Categoria: {{$article->category->name}}</a>
                         @foreach ($article->tags as $tag)

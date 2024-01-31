@@ -70,7 +70,7 @@ class PublicController extends Controller
                 break;
         }
         $user->update();
-        return redirect()->route('home')->with('message', 'grazie per averci contattati');
+        return redirect()->route('home')->with('success', 'grazie per averci contattati');
     }
 
     public function searchArticle(Request $request){

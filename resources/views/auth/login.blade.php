@@ -1,6 +1,6 @@
 <x-main title="Login">
 
-    <section class="vh-100" style="background-color: #eee;">
+    <section class="vh-100">
         <div class="container py-5 h-100 ">
           <div class="row d-flex align-items-center justify-content-center h-100 p-md-5 bg-white" style="border-radius: 25px;">
             <div class="col-md-8 col-lg-7 col-xl-6">
@@ -11,14 +11,17 @@
               <form method="POST" action="{{route('login')}}">
                 @csrf
                 <div class="form-outline mb-4">
-                  <input type="email" name="email" class="form-control form-control-lg" />
+                  @error('email') <span class="text-danger">{{$message}}</span> @enderror
+                  <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}}"/>
                   <label class="form-label" >Email</label>
-                  @error('email') {{$message}} @enderror
+                  
                 </div>
       
                 <div class="form-outline mb-4">
+                  @error('password') <span class="text-danger">{{$message}}</span> @enderror
                   <input type="password" name="password" class="form-control form-control-lg" />
                   <label class="form-label">Password</label>
+                  
                 </div>
       
                 <div class="d-flex justify-content-around align-items-center mb-4">

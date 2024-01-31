@@ -23,10 +23,10 @@
             <td>{{$tag->name}}</td>
             <td>{{count($tag->articles)}}</td>
             <td>
-                <form action="{{route('tag.edit', $tag)}}" class="w-50" method="post">
+                <form action="{{route('tag.edit', $tag)}}" class="w-50 d-flex" method="post">
                     @csrf
                     <input type="text" class="form-control" placeholder="nuovo nome" name="name">
-                    <button class="btn btn-success" type="submit">Salva</button>
+                    <button class="btn btn-success mx-3" type="submit">Salva</button>
                 </form>
             </td>
             <td>

@@ -57,9 +57,15 @@ Route::middleware(['admin', 'verified'])->group(function(){
 
     Route::get('/admin/{user}/set-revisor', [AdminController::class, 'makeUserRevisor'])->name('admin.makeUserRevisor');
 
+    Route::get('/admin/{user}/reject-revisor', [AdminController::class, 'rejectUserRevisor'])->name('admin.rejectUserRevisor');
+
     Route::get('/admin/{user}/set-admin', [AdminController::class, 'makeUserAdmin'])->name('admin.makeUserAdmin');
 
+    Route::get('/admin/{user}/reject-admin', [AdminController::class, 'rejectUserAdmin'])->name('admin.rejectUserAdmin');
+
     Route::get('/admin/{user}/set-writer', [AdminController::class, 'makeUserWriter'])->name('admin.makeUserWriter');
+
+    Route::get('/admin/{user}/reject-writer', [AdminController::class, 'rejectUserWriter'])->name('admin.rejectUserWriter');
 
     Route::post('/tag/{tag}/update', [AdminController::class, 'editTag'])->name('tag.edit');
 

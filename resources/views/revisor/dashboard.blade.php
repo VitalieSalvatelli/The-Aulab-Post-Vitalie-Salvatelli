@@ -14,7 +14,8 @@
                 <h1>Bentornato {{Auth::user()->name}}</h1>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row card shadow">
             <div class="col-12">
                 <x-revisor_table :articles="$articles"/>
             </div>

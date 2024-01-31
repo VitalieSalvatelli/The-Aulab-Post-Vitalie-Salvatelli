@@ -8,7 +8,7 @@
         </div>
     </div>    
 
-<div class="container">
+<div class="container my-5">
     <div class="row">
         <div class="col-12 text-center">
             <h1>Bentornato, {{Auth::user()->name}}.</h1>
@@ -16,11 +16,11 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container card shadow">
     <div class="row">
         @if (count(Auth::user()->articles)>0)
             
-            <div class="co-12 my-3 text-center">
+            <div class="col-12 my-3 text-center">
                 <h1>Tutti i tuoi articoli</h1>
             </div>
 

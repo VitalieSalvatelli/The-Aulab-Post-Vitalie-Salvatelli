@@ -41,7 +41,7 @@
                 <form action="{{route('article.delete', $article)}}" class="w-50" method="post">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Elimina</button>
+                    <button class="btn btn-danger" onsubmit="return confirm('Sei sicuro di voler eliminare l articolo?)" type="submit">Elimina</button>
                 </form>
             </td>
 

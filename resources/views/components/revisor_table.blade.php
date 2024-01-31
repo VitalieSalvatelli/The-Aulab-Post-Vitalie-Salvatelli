@@ -37,7 +37,7 @@
                 <td>{{$article->created_at->format('d-m-y')}}</td>
 
                 <td>
-                    <a href="{{route('revisor.detail', $article)}}" class="btn btn-primary">Leggi</a>
+                    <a href="{{route('revisor.detail', $article)}}" class="btn btn-outline-info">Leggi</a>
                 </td>
 
             </tr>

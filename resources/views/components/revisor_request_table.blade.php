@@ -18,7 +18,8 @@
 
                 <td>
 
-                    <a href="{{route('admin.makeUserRevisor', $user)}}" class="btn btn-primary">Rendi Revisore</a>
+                    <a href="{{route('admin.makeUserRevisor', $user)}}" class="btn btn-outline-success">Rendi Revisore</a>
+                    <a href="{{route('admin.rejectUserRevisor', $user)}}" onclick="return confirm('Sei sicuro di voler rifiutare?')" class="btn btn-danger">Rifiuta richiesta</a>
 
                 </td>
 

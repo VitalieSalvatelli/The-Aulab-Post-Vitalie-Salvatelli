@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RevisorController extends Controller
 {
 
     public function revisorDashboard(){
 
-        $articles= Article::where('is_accepted', false)->get();
+        $articles= Article::where('is_accepted', false)->where('user_id','!=', Auth::id())->get();
+
+        // foreach ($articles as $article) {
+        //     $articles = Article::where(Auth::id()!=$article->user->id);
+        // }
 
         return view('revisor.dashboard', compact('articles'));
 

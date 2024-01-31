@@ -1,6 +1,6 @@
 <x-main title="Register">
 
-  <section class="vh-100" style="background-color: #eee;">
+  <section class="vh-100">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-12 col-xl-11">
@@ -16,24 +16,28 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" class="form-control" name="name"/>
+                        <input type="text" class="form-control" name="name" value="{{old('name')}}"/>
                         <label class="form-label">Nome</label>
+                        @error('name') {{$message}} @enderror
                       </div>
                     </div>
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="email" class="form-control" name="email"/>
+                        <input type="email" class="form-control" name="email" value="{{old('email')}}"/>
                         <label class="form-label">Email</label>
+                        @error('email') {{$message}} @enderror
                       </div>
                     </div>
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
+                        @error('password') <span class="text-danger">{{$message}}</span> @enderror
                         <input type="password" class="form-control" name="password"/>
                         <label class="form-label">Password</label>
+                        
                       </div>
                     </div>
   
@@ -42,6 +46,7 @@
                       <div class="form-outline flex-fill mb-0">
                         <input type="password" class="form-control" name="password_confirmation"/>
                         <label class="form-label">Conferma password</label>
+                        @error('password_confirmation') {{$message}} @enderror
                       </div>
                     </div>
   

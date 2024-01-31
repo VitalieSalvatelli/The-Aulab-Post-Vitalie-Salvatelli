@@ -15,35 +15,39 @@
             </div>
         </div>
 
-            <div class="row my-3">
-                <div class="col-12">
-                    <h2 class="text-center">Richieste di amministratore</h2>
-                    <x-admin_request_table :adminRequest="$adminRequest"/>
+            <div class="card shadow">
+
+                <div class="row my-3">
+                    <div class="col-12">
+                        <h2 class="text-center">Richieste di amministratore</h2>
+                        <x-admin_request_table :adminRequest="$adminRequest"/>
+                    </div>
                 </div>
-            </div>
-    
-    
         
-            <div class="row my-3">
-                <div class="col-12">
-                    <h2 class="text-center">Richieste di revisore</h2>
-                    <x-revisor_request_table :revisorRequest="$revisorRequest"/>
-                </div>
-            </div>
         
-    
             
-            <div class="row my-3">
-                <div class="col-12">
-                    <h2 class="text-center">Richieste di articolista</h2>
-                    <x-writer_request_table :writerRequest="$writerRequest"/>
+                <div class="row my-3">
+                    <div class="col-12">
+                        <h2 class="text-center">Richieste di revisore</h2>
+                        <x-revisor_request_table :revisorRequest="$revisorRequest"/>
+                    </div>
                 </div>
+            
+        
+                
+                <div class="row my-3">
+                    <div class="col-12">
+                        <h2 class="text-center">Richieste di articolista</h2>
+                        <x-writer_request_table :writerRequest="$writerRequest"/>
+                    </div>
+                </div>
+
             </div>
             
 
     </div>
 
-    <div class="container my-5">
+    <div class="container my-5 card shadow">
         <div class="row">
             <div class="col-12 my-2">
                 <h2>Crea tag</h2>
@@ -52,7 +56,7 @@
         </div>
     </div>
 
-    <div class="container my-5">
+    <div class="container my-5 card shadow">
         <div class="row">
             <div class="col-12">
                 <h2>Gestisci i tag</h2>
@@ -61,7 +65,7 @@
         </div>
     </div>
 
-    <div class="container my-5">
+    <div class="container my-5 card shadow">
         <div class="row">
             <div class="col-12 my-2">
                 <h2>Crea categoria</h2>
@@ -70,7 +74,7 @@
         </div>
     </div>
 
-    <div class="container my-5">
+    <div class="container my-5 card shadow">
         <div class="row">
             <div class="col-12">
                 <h2>Gestisci le categorie</h2>

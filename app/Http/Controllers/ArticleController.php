@@ -54,7 +54,7 @@ class ArticleController extends Controller
         $article->save();
 
 
-        return redirect()->route('home')->with('message','Articolo caricato correttamente');
+        return redirect()->route('home')->with('success','Articolo caricato correttamente');
     }
 
     /**
@@ -82,7 +82,9 @@ class ArticleController extends Controller
     {
         $article->is_accepted=false;
         if ($request->has('image')) {
-            Storage::delete('public/images/'.$article->id);
+            
+            Storage::delete($article->image);
+            Storage::deleteDirectory('images'.$article->id);
             $article->update([
                 'title'=>$request->input('title'),
                 'subtitle'=>$request->input('subtitle'),
@@ -115,7 +117,9 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        Storage::delete('public/images/'.$article->id,'copertina.jpg');
+        
+        Storage::delete($article->image);
+        Storage::deleteDirectory('images'.$article->id);
         $article->delete();
         return redirect()->route('writer.dashboard')->with(["success"=>"Articolo Eliminato con successo"]);
     }

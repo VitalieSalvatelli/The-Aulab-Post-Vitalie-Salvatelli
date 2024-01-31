@@ -16,13 +16,29 @@
         </div>
     </div>
 
-    <div class="container text-center my-5 py-3">
-        <h3 class="h1">I post più recenti</h3>
-    </div>
+    @if ($articles->count()>0)
 
-    @if (session('message'))
-        <div class="alert" role="alert">
-            {{session('message')}}
+        <div class="container text-center my-5 py-3">
+            <h3 class="h1">I post più recenti</h3>
+        </div>
+
+    @else
+
+        <div class="text-center my-5 py-3">
+            <h1>Ancora nessun articolo</h1>
+            @if (Auth::user() && Auth::user()->is_writer)
+                <a href="{{route('articles.create')}}" class="btn btn-success">Crea Tu il primo articolo!</a>
+            @endif
+            
+        </div>
+        
+    @endif
+
+    
+
+    @if (session('success'))
+        <div class="alert alert-success text-center" role="alert">
+            {{session('success')}}
         </div>
     @endif
 

@@ -18,7 +18,8 @@
 
                 <td>
 
-                    <a href="{{route('admin.makeUserAdmin', $user)}}" class="btn btn-primary">Rendi Admin</a>
+                    <a href="{{route('admin.makeUserAdmin', $user)}}" class="btn btn-outline-success">Rendi Admin</a>
+                    <a href="{{route('admin.rejectUserAdmin', $user)}}" onclick="return confirm('Sei sicuro di voler rifiutare?')" class="btn btn-danger">Rifiuta richiesta</a>
 
                 </td>
 

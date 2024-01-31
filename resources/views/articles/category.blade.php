@@ -16,9 +16,21 @@
         </div>
     </div>
 
-    <div class="text-center my-5 py-3">
-        <h1>{{$category->name}}</h1>
-    </div>
+    @if ($articles->count()>0)
+
+        <div class="text-center my-5 py-3">
+            <h1>{{$category->name}}</h1>
+        </div>
+        
+    @else
+
+        <div class="text-center my-5 py-3">
+            <h1>Nessun articlo trovato</h1>
+        </div>
+        
+    @endif
+
+    
 
 
     <div class="container my-3">

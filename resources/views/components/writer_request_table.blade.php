@@ -18,7 +18,8 @@
 
                 <td>
 
-                    <a href="{{route('admin.makeUserWriter', $user)}}" class="btn btn-primary">Rendi Writer</a>
+                    <a href="{{route('admin.makeUserWriter', $user)}}" class="btn btn-outline-success">Rendi Writer</a>
+                    <a href="{{route('admin.rejectUserWriter', $user)}}" onclick="return confirm('Sei sicuro di voler rifiutare?')" class="btn btn-danger">Rifiuta richiesta</a>
 
                 </td>
 

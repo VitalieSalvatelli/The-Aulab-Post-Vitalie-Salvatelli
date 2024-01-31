@@ -26,6 +26,14 @@ class AdminController extends Controller
 
     }
 
+    public function rejectUserAdmin(User $user){
+
+        $user->is_admin = false;
+        $user->save();
+        return redirect()->route('admin.dashboard');
+
+    }
+
     public function makeUserRevisor(User $user){
 
         $user->is_revisor = true;
@@ -34,6 +42,15 @@ class AdminController extends Controller
 
     }
 
+    public function rejectUserRevisor(User $user){
+
+        $user->is_revisor = false;
+        $user->save();
+        return redirect()->route('admin.dashboard');
+
+    }
+
+
     public function makeUserWriter(User $user){
 
         $user->is_writer = true;
@@ -41,6 +58,15 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard');
 
     }
+
+    public function rejectUserWriter(User $user){
+
+        $user->is_writer = false;
+        $user->save();
+        return redirect()->route('admin.dashboard');
+
+    }
+
 
     public function editTag(Request $request, Tag $tag){
         $tag->update(
