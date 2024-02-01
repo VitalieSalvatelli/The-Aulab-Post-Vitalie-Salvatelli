@@ -37,7 +37,7 @@
                         <label class="form-label">Categoria</label>
                 
                         <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
-                            <option selected>Scegli la categoria del post</option>
+                            
                             @foreach ($categories as $category)
                                 
                             <option value="{{$category->id}}" {{$category->id == $article->category->id ? 'selected' : ''}}>{{$category->name}}</option>
