@@ -22,6 +22,18 @@
             <h3 class="h1">I post più recenti</h3>
         </div>
 
+        <div class="dropdown container text-center my-5 py-3">
+            <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filtra per categoria
+            </button>
+            <ul class="dropdown-menu gradient-custom">
+                @foreach ($categories as $category)
+                <li><a class="dropdown-item" href="{{route('articles.category', $category)}}">{{$category->name}}</a></li>
+                @endforeach
+            </ul>
+        </div>
+
+
     @else
 
         <div class="text-center my-5 py-3">
@@ -42,18 +54,18 @@
         </div>
     @endif
 
-    <div class="container my-3">
+    <div class="container my-3 ">
         <div class="row">
             @foreach ($articles as $article)
         
             
-                <div class="col-12 col-sm-8 col-md-6 col-lg-4 ">
-                    <div class="card ">
-                        <img class="card-img" src="{{Storage::url($article->image)}}" alt="image">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card mb-3">
+                        <img height="250" class="card-img" src="{{Storage::url($article->image)}}" alt="image">
                         
                         
                         <div class="card-body">                            
-                            <h4 class="card-title">{{$article->title}}</h4>                            
+                            <h4 class="card-title">{{Str::limit($article->title,55)}}</h4>                            
                             <small class="text-muted cat">
                                 <i class="bi bi-person-check-fill text-info"></i> {{$article->user->name}}
                             </small>

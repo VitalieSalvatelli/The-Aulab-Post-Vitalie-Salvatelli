@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Mail\RequestRoleMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class PublicController extends Controller
 {
@@ -26,7 +28,25 @@ class PublicController extends Controller
         //     return redirect()->back()->with('message', 'Hai gia fatto richiesta per questa posizione');
         // }
 
-       
+        if (!User::where('email','=', $request->input('email'))->exists()) {
+            return redirect()->back()->with('message', 'Inserisci una mail valida');
+        }
+
+       $validator=Validator::make(
+        $request->all(),
+        [
+            'role'=>'required',
+            
+        ],
+        [
+            'role.required'=>'Seleziona il ruolo per il quale vuoi fare richiesta',
+            
+        ]
+       );
+
+       if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);    
+        }
         
 
         $user = Auth::user();

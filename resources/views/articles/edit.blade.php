@@ -4,6 +4,7 @@
         <div class="row align-items-center">
             <div class="col-12 text-center">
                 <h1 class="display-4 mt-4 pt-2" style="font-size: 100px">{{config('app.name')}}</h1>
+                <h3>Modifica articolo</h3>
             </div>
         </div>
     </div>
@@ -11,13 +12,7 @@
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach ($errors as $error)
-                            <li>{{$error}}</li>
-                        @endforeach
-                    </div>
-                @endif
+                
 
                 <form class="card p-5 shadow" method="POST" action="{{route('article.update', compact('article'))}}" enctype="multipart/form-data">
                     @csrf
@@ -72,7 +67,7 @@
                     <div class="my-3">
                         <label for="" class="form-label">Copertina attuale: </label> <br>
                         <div class="text-center">
-                            <img width="300" src="{{Storage::url($article->image)}}" alt="Immagine non disponibile">
+                            <img width="200" src="{{Storage::url($article->image)}}" alt="Immagine non disponibile">
                         </div>
                     </div>
                 
@@ -89,7 +84,7 @@
                         @enderror
                     </div>
                     
-                    <button type="submit" class="btn btn-success">Modifica</button>
+                    <button type="submit" onclick="return confirm('Sei sicuro delle modifiche fatte?')" class="btn btn-success">Modifica</button>
                 
                 </form>                
 

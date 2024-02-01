@@ -16,6 +16,12 @@
     </div>
 </div>
 
+@if (session('success'))
+        <div class="alert alert-success text-center" role="alert">
+            {{session('success')}}
+        </div>
+    @endif
+
 <div class="container card shadow">
     <div class="row">
         @if (count(Auth::user()->articles)>0)

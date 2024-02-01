@@ -22,6 +22,17 @@
             <h1>ARTICOLI PER: {{$key}}</h1>
         </div>
 
+        <div class="dropdown container text-center my-5 py-3">
+            <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filtra per categoria
+            </button>
+            <ul class="dropdown-menu gradient-custom">
+                @foreach ($categories as $category)
+                <li><a class="dropdown-item" href="{{route('articles.category', $category)}}">{{$category->name}}</a></li>
+                @endforeach
+            </ul>
+        </div>
+
     @else
 
         <div class="text-center my-5 py-3">
@@ -36,35 +47,35 @@
             @foreach ($articles as $article)
         
             
-                <div class="col-12 col-sm-8 col-md-6 col-lg-4 ">
-                    <div class="card ">
-                        <img class="card-img" src="{{Storage::url($article->image)}}" alt="image">
-                        
-                        
-                        <div class="card-body">                            
-                            <h4 class="card-title">{{$article->title}}</h4>                            
-                            <small class="text-muted cat">
-                                <i class="bi bi-person-check-fill text-info"></i> {{$article->user->name}}
-                            </small>
-                            <p class="card-text">{{Str::limit($article->text,200)}}</p>
-                            <div class="d-flex justify-content-between">
-                                <a href="{{route('articles.show', $article)}}" class="btn btn-outline-info">Leggi articolo</a>
-                                <a href="{{route('articles.category', $article->category)}}" class="btn btn-outline-danger btn-sm ">{{$article->category->name}}</a>
-                            </div>      
-                        </div>
-
-                        <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">                            
-                            <i class="bi bi-hourglass-split text-info"></i>
-                            <div class="views">Tempo di lettura: {{$article->readDuration()}} minuti</div>                     
-                        </div>
-
-                        <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">                            
-                            <i class="bi bi-calendar3 text-info"></i>
-                            <div class="views">{{$article->created_at->format('d/m/y')}}</div>                     
-                        </div>
-
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                <div class="card mb-3">
+                    <img height="250" class="card-img" src="{{Storage::url($article->image)}}" alt="image">
+                    
+                    
+                    <div class="card-body">                            
+                        <h4 class="card-title">{{Str::limit($article->title,55)}}</h4>                            
+                        <small class="text-muted cat">
+                            <i class="bi bi-person-check-fill text-info"></i> {{$article->user->name}}
+                        </small>
+                        <p class="card-text">{{Str::limit($article->text,200)}}</p>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{route('articles.show', $article)}}" class="btn btn-outline-info">Leggi articolo</a>
+                            <a href="{{route('articles.category', $article->category)}}" class="btn btn-outline-danger btn-sm ">{{$article->category->name}}</a>
+                        </div>      
                     </div>
+
+                    <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">                            
+                        <i class="bi bi-hourglass-split text-info"></i>
+                        <div class="views">Tempo di lettura: {{$article->readDuration()}} minuti</div>                     
+                    </div>
+
+                    <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">                            
+                        <i class="bi bi-calendar3 text-info"></i>
+                        <div class="views">{{$article->created_at->format('d/m/y')}}</div>                     
+                    </div>
+
                 </div>
+            </div>
             
         
             @endforeach

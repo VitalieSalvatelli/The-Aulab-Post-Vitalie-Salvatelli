@@ -17,6 +17,9 @@
             Home
           </a>
         </li>
+
+        
+
         @auth
         @if (Auth::user()&&Auth::user()->is_writer)
 
@@ -75,12 +78,15 @@
             <li>
               <hr class="dropdown-divider" />
             </li>
-          <li><a class="dropdown-item" href="/logout" onclick="event.preventDefault();getElementById('form-logout').submit();">Logout</a></li>
+            <li><a class="dropdown-item" href="/logout" onclick="event.preventDefault();getElementById('form-logout').submit();">Logout</a></li>
             <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>
           </ul>
         </li>
+        </li>
       </ul>
       @endauth
+
+      
 
       @guest
       <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
@@ -104,7 +110,7 @@
         </li>
       </ul>
       @endguest
-
+    </div>
 
 
       <form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0 mr-xl-0" action="{{route('search.article')}}" method="get">

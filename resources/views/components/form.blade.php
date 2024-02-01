@@ -7,7 +7,7 @@
             
                 <div class="mb-3 text-center">
                     <label class="form-label">Titolo</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{old('title')}}" required>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{old('title')}}" >
                     @error('title')
                             <span class="small text-danger">{{$message}}</span>
                     @enderror

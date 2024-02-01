@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreArticleRequest;
+use App\Http\Requests\updateArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -78,7 +79,7 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(updateArticleRequest $request, Article $article)
     {
         $article->is_accepted=false;
         if ($request->has('image')) {
@@ -109,7 +110,7 @@ class ArticleController extends Controller
 
         $article->tags()->detach();
         $article->tags()->sync($request->input('tasg'));
-        return redirect()->route('writer.dashboard')->with(["success"=>"Articolo modificato con successo"]);;
+        return redirect()->route('writer.dashboard')->with(["success"=>"Articolo modificato con successo"]);
     }
 
     /**

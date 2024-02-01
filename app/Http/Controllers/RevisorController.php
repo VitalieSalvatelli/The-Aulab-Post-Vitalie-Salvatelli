@@ -29,14 +29,14 @@ class RevisorController extends Controller
         $article->is_accepted = true;
         $article->save();
 
-        return redirect()->route('revisor.dashboard');
+        return redirect()->route('revisor.dashboard')->with(["success"=>"Articolo accettato con successo"]);
     }
 
     public function rejectArticle(Article $article){
         $article->is_accepted = NULL;
         $article->save();
 
-        return redirect()->route('revisor.dashboard');
+        return redirect()->route('revisor.dashboard')->with(["success"=>"Articolo rifiutato con successo"]);
     }
     
 }

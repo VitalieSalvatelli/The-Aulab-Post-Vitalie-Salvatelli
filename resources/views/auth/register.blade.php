@@ -16,18 +16,20 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" class="form-control" name="name" value="{{old('name')}}"/>
+                        @error('name') <span class="text-danger">{{$message}}</span> @enderror
+                        <input type="text" class="form-control" name="name" value="{{old('name')}}" @error('name') is-invalid @enderror/>
                         <label class="form-label">Nome</label>
-                        @error('name') {{$message}} @enderror
+                        
                       </div>
                     </div>
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
+                        @error('email') <span class="text-danger">{{$message}}</span> @enderror
                         <input type="email" class="form-control" name="email" value="{{old('email')}}"/>
                         <label class="form-label">Email</label>
-                        @error('email') {{$message}} @enderror
+                        
                       </div>
                     </div>
   
@@ -44,9 +46,10 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
+                        @error('password_confirmation') <span class="text-danger">{{$message}}</span> @enderror
                         <input type="password" class="form-control" name="password_confirmation"/>
                         <label class="form-label">Conferma password</label>
-                        @error('password_confirmation') {{$message}} @enderror
+                        
                       </div>
                     </div>
   

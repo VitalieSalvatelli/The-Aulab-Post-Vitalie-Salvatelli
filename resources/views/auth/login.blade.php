@@ -12,14 +12,14 @@
                 @csrf
                 <div class="form-outline mb-4">
                   @error('email') <span class="text-danger">{{$message}}</span> @enderror
-                  <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}}"/>
+                  <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}} " />
                   <label class="form-label" >Email</label>
                   
                 </div>
       
                 <div class="form-outline mb-4">
                   @error('password') <span class="text-danger">{{$message}}</span> @enderror
-                  <input type="password" name="password" class="form-control form-control-lg" />
+                  <input type="password" name="password" class="form-control form-control-lg " />
                   <label class="form-label">Password</label>
                   
                 </div>

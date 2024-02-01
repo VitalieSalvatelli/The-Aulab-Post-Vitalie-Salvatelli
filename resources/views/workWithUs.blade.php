@@ -48,7 +48,7 @@
                                 <label class="form-label h5">Per quale posizione vuoi candidarti?</label>
                         
                                 <select class="form-control" name="role">
-                                    <option selected>Scegli una posizione</option>                        
+                                                          
                                         
                                     <option value="admin">Admin</option>
                                     <option value="revisor">Revisor</option>
